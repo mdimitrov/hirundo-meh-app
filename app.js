@@ -41,9 +41,11 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
 //load routes
 var index = require("./routes"),
     user = require("./routes/user");
+	feed = require("./routes/feed");
 
 app.use('/', index);
 app.use('/user', user);
+app.use('/feed', feed);
 
 /********* Error handling ***********/
 // catch 404 and forward to error handler
@@ -66,13 +68,3 @@ if (app.get('env') === 'development') {
 }
 
 module.exports = app;
-
-///
-function checkAuthService(req, res, next) {
-  if (!req.session.username) {
-    res.send('You have to sign in to view this page');
-  } else {
-    next();
-  }
-}
-///

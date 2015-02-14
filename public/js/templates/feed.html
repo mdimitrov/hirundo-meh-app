@@ -1,0 +1,12 @@
+{{#if empty}}
+	<div class='empty-feed'>Your feed is empty.</div>
+{{else}}
+	<div class="container">
+		{{#each tweets}}
+			<div class='panel panel-primary'>
+				<div class='panel-heading'>{{this.author}}</div>
+				<div class='panel-body'>{{this.text}}</div>
+			</div>
+		{{/each}}
+	</div>
+{{/if}}
