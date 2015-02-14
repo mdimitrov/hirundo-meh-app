@@ -7,6 +7,8 @@ var fs = require('fs');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var config = require('./config');//cool
+var exphbs  = require('express-handlebars');
+
 var app = express();
 
 /********* Mongoose config ***********/
@@ -27,9 +29,11 @@ app.use(session({ secret: 'keyboard cat'}))
 
 app.use(express.static(path.normalize(__dirname + '/public'))); // load static assets from here
 
-/********* Set views path and engine ***********/
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
+// /********* Set views path and engine ***********/
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'hjs');
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 /********* App logic ***********/
 //bootstrap models
