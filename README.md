@@ -1,15 +1,12 @@
+# hirundo-meh-app
 
-## Node Skeleton App
-
-A simple boilerplate for building my modest web apps using node, express and mongoose.
+A simple "twitterish" app for NoSQL course @fmi with mongoose, express and hjs
 
 ## Installation and Usage
     
-    $ git clone https://github.com/mdimitrov/node-skeleton-app.git
-    $ cd node-skeleton-app
+    $ git clone https://github.com/mdimitrov/hirundo-meh-app.git
+    $ cd hirundo-meh-app
     $ npm install
     $ npm start
 
-Add app logic in routes (`routes/`), create models (`models/`) and views (`views/`).
 
-# hirundo-meh-app
