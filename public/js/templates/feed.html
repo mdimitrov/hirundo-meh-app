@@ -1,0 +1,9 @@
+{{#if empty}}
+	<div class='empty-feed'>Your feed is empty.</div>
+{{else}}
+	{{#each tweets}}
+		<div class='tweet'>
+			{{this.text}}
+		</div>
+	{{/each}}
+{{/if}}

@@ -4,8 +4,9 @@
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/css/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/require-setup.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </head>
   <body>
     <h1>{{ title }}</h1>
@@ -64,6 +65,8 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+
+	<div id="feed"></div>
 
   </body>
 </html>

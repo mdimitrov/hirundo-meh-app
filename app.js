@@ -34,10 +34,12 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
 
 //load routes
 var index = require("./routes"),
-    users = require("./routes/users");
+    users = require("./routes/users"),
+    feed = require("./routes/feed");
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/feed', feed);
 
 /********* Error handling ***********/
 // catch 404 and forward to error handler
