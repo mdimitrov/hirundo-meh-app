@@ -1,4 +1,6 @@
 var express = require('express');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var mongoose = require('mongoose');
 var path = require('path');
 var fs = require('fs');
@@ -19,6 +21,10 @@ mongoose.connection.on('disconnected', connect);
 app.use(logger('dev')); //why not
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat'}))
+
 app.use(express.static(path.normalize(__dirname + '/public'))); // load static assets from here
 
 /********* Set views path and engine ***********/
@@ -34,10 +40,10 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
 
 //load routes
 var index = require("./routes"),
-    users = require("./routes/users");
+    user = require("./routes/user");
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/user', user);
 
 /********* Error handling ***********/
 // catch 404 and forward to error handler
@@ -60,3 +66,13 @@ if (app.get('env') === 'development') {
 }
 
 module.exports = app;
+
+///
+function checkAuthService(req, res, next) {
+  if (!req.session.username) {
+    res.send('You have to sign in to view this page');
+  } else {
+    next();
+  }
+}
+///
