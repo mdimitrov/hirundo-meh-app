@@ -1,0 +1,16 @@
+{
+    "uri": "mongodb://localhost:27017/hirondudb",
+    "options": {
+        "db": {
+            "native_parser": true
+        },
+        "server": {
+            "poolSize": 5
+        },
+        "replset": {
+            "rs_name": "myReplicaSetName"
+        },
+        "user": "myUserName",
+        "pass": "myPassword"
+    }
+}
