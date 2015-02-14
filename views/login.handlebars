@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sign In</title>
-    <link rel='stylesheet' href='/css/style.css' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-  </head>
-  <body class="container">
-
-    <p class="bg-danger">{{ message }}</p>
+<p class="bg-danger">{{ message }}</p>
     <form method="POST" action="/user/login">
       <div class="form-group">
         <label for="username">Username</label>
@@ -23,6 +12,3 @@
 
       <button name="submit" type="submit" class="btn btn-default">Sign In</button>
     </form>
-
-  </body>
-</html>
