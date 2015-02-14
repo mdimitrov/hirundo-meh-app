@@ -1,5 +1,5 @@
 {
-    "uri": "mongodb://localhost:27017/hirondudb",
+    "uri": "mongodb://localhost:27017/hirundo",
     "options": {
         "db": {
             "native_parser": true

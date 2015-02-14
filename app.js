@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var path = require('path');
+var fs = require('fs');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var config = require('./config');//cool
@@ -26,7 +27,10 @@ app.set('view engine', 'hjs');
 
 /********* App logic ***********/
 //bootstrap models
-require('./models');//must happen before routing starts!
+// require('./models');//must happen before routing starts!
+fs.readdirSync(__dirname + '/models').forEach(function (file) {
+  if (~file.indexOf('.js')) require(__dirname + '/models/' + file);
+});
 
 //load routes
 var index = require("./routes"),
