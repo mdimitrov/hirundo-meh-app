@@ -24,12 +24,7 @@ router.route('/')
             if (err) {
                 res.send(err);
             }
-            User.find(function(err, users) {
-                if (err) {
-                    res.send(err);
-                }
-                res.json(users);
-            });
+            res.redirect('/');
         });
 
     })
@@ -118,11 +113,12 @@ router.route('/:userId')
 
 module.exports = router;
 
-function loadUser(req, res) {
+function loadUser(req, res, next) {
   if (req.session.userId) {
     User.findById(req.session.userId, function(err, user) {
       if (user) {
-        return user;
+        next(user);
+        return;
       } else {
         res.redirect('/user/login');
       }
