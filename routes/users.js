@@ -8,7 +8,7 @@ router.route('/')
 
     // create a UserEntry (accessed at POST http://localhost:1337/users)
     .post(function(req, res) {
-        
+
         var UserEntry = new User();      // create a new instance of the User model
         UserEntry.username = req.body.username;  // set the users username (comes from the request)
 
@@ -18,10 +18,10 @@ router.route('/')
                 res.send(err);
             }
 
-            res.render('uisers',{ message: 'UserEntry created!' });
+            res.render('users',{ title: 'Users Panel', message: 'UserEntry created!' });
         });
-        // res.render('users',{ message: 'UserEntry created!' });
-        
+        // res.render('users', { title: 'Users Panel', message: 'UserEntry created!' });
+
     })
 
     // get all the users (accessed at GET http://localhost:1337/users)
@@ -44,8 +44,8 @@ router.route('/')
                 if (err) {
                     res.send(err);
                 }
-                res.json(users); 
-                // res.render('users', {message: 'get all users'});
+                res.json(users);
+                // res.render('users',{ title: 'Users Panel', 'get all users'});
             });
 
         // });
@@ -57,12 +57,18 @@ router.route('/:userId')
 
     // get the User with that id (accessed at GET http://localhost:1337/users/:userId)
     .get(function(req, res) {
-        res.render('users', {message: 'get user with id ' + req.params.userId});
+        res.render('users',{
+            title: 'Users Panel',
+            message: 'get user with id ' + req.params.userId
+        });
     })
 
     // update the User with this id (accessed at PUT http://localhost:1337/users/:userId)
     .put(function(req, res) {
-        res.render('users', {message: 'update user with id ' + req.params.userId});
+        res.render('users',{
+            title: 'Users Panel',
+            message: 'update user with id ' + req.params.userId
+        });
     })
 
     // delete the User with this id (accessed at DELETE http://localhost:1337/users/:userId)
@@ -75,7 +81,10 @@ router.route('/:userId')
 
         //     res.json({ message: 'Successfully deleted' });
         // });
-        res.render('users', {message: 'delete user with id ' + req.params.userId});
+        res.render('users',{
+            title: 'Users Panel',
+            message: 'delete user with id ' + req.params.userId
+        });
     });
 
 module.exports = router;
