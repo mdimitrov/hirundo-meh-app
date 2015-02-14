@@ -15,7 +15,6 @@ userSchema.index({ username: 1, type: 1 });
 
 /* todo: consider virtual getters - damn usefull */
 /* todo: consider using middlewear - http://mongoosejs.com/docs/middleware.html */
-
 /**
  * Virtuals
  */
