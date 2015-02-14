@@ -6,7 +6,7 @@ var User = mongoose.model('user');
 
 router.route('/')
 
-    // create a UserEntry (accessed at POST http://localhost:1337/users)
+    // create a UserEntry (accessed at POST http://localhost:1337/user)
     .post(function(req, res) {
         if (!req.body) {
             return res.sendStatus(400);
@@ -34,7 +34,7 @@ router.route('/')
 
     })
 
-    // get all the users (accessed at GET http://localhost:1337/users)
+    // get all the users (accessed at GET http://localhost:1337/user)
     .get(function(req, res) {
         User.find(function(err, users) {
             if (err) {
