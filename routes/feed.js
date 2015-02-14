@@ -6,10 +6,12 @@ router.get('/', function(req, res) {
   	empty: false,
   	tweets: [
   		{
-  			text: "test1"
+  			author: "Pesho",
+  			text: "Obicham chalga"
   		},
   		{
-  			text: "test2"
+  			author: "Vladi",
+  			text: "Bum bam #RealBolt"
   		}
   	]
   })
