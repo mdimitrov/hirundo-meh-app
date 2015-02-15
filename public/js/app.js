@@ -7,7 +7,7 @@ require(['jquery', 'handlebars', 'text!js/templates/feed.html', 'bootstrap'], fu
         console.log(event.target.getAttribute('username'));
         $.ajax({
             type: "get",
-            url: "http://localhost:1337/unfollow/" + event.target.getAttribute('username'),
+            url: "http://localhost:1337/user/unfollow/" + event.target.getAttribute('username'),
         })
         .done(function() {
             fetchFeed();
