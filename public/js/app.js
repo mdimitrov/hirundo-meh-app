@@ -4,8 +4,17 @@ require(['jquery', 'handlebars', 'text!js/templates/feed.html', 'bootstrap'], fu
 	function reloadFeed(data) {
 		$("#feed").html(Handlebars.compile(feedTemplate)(data));
     $(".glyphicon-eye-close").click(function (event) {
-      //TODO
-      console.log(event.target.getAttribute('username'));
+        console.log(event.target.getAttribute('username'));
+        $.ajax({
+            type: "get",
+            url: "http://localhost:1337/unfollow/" + event.target.getAttribute('username'),
+        })
+        .done(function() {
+            fetchFeed();
+        })
+        .fail(function(error) {
+            console.log(error);
+        });
     });
 	}
 

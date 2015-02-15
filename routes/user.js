@@ -53,8 +53,6 @@ router.route('/follow/:username')
         var username = req.params.username;
         loadUser(req,res, function(user){
             if(username != user.username) {
-                console.log(user.following.indexOf(username));
-                console.log(username);
                 if(user.following.indexOf(username) < 0) {
                     user.following.push(username);
                 }
@@ -69,7 +67,7 @@ router.route('/follow/:username')
 
     });
 
-router.route('/unfollow/:usearname')
+router.route('/unfollow/:username')
     .get(function(req, res) {
         loadUser(req,res, function(user){
             var username = req.params.username;
