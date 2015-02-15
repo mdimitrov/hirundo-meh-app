@@ -24,6 +24,12 @@ a {
 	padding-left: 15px;
 	width: 585px;
 }
+
+.panel-heading .glyphicon-eye-close {
+	margin-left: 5px;
+	cursor: pointer;
+}
+
 * {
 	-moz-user-select: none;
   -webkit-user-select: none;
