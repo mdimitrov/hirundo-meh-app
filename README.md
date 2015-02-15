@@ -1,6 +1,6 @@
 # hirundo-meh-app
 
-A simple "twitterish" app for NoSQL course @fmi with mongoose, express and hjs
+A simple "twitterish" app for NoSQL course @fmi with mongoose, express and handlebars
 
 ## Installation and Usage
     
