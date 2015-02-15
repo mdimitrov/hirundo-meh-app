@@ -7,7 +7,7 @@ var userSchema = new Schema({
     username: String,
   	email: String,
   	password: String,
-  	registrationDate: { type: Date, default: Date.now },
+  	registrationDate: { type: Number, default: 0 },
   	following: [String]
 });
 

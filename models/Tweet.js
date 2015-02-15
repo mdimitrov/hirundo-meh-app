@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
 
 
 var tweetSchema = new Schema({
+	authorId: String,
 	author: String,// референции по unique username към документ от към документ от колекцията User колекцията User
   	content: String,
   	location: String,
-  	date: Date
+  	date: Number
 });
 
 // important about Date!!

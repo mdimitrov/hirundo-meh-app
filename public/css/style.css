@@ -11,3 +11,8 @@ a {
 	max-width: 600px;
 	margin-top: 20px;
 }
+* {
+	-moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
