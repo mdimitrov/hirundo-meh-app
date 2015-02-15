@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
 			user: user,
 		});
 	});
-
 });
 
 module.exports = router;

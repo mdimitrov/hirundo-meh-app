@@ -1,1 +1,26 @@
-<div id="feed"></div>
+{{#if listing}}
+	<div class="row">
+		<div class="col-sm-6">
+        	<ul class="list-group">
+				<li class="list-group-item list-group-item-info">Users to follow</li>
+			{{#each users}}
+				<li class="list-group-item">{{this.username}}
+					<a class="pull-right" href="/user/follow/{{this.username}}">follow <span class="glyphicon glyphicon-eye-open" ></span></a>
+				</li>
+			{{/each}}
+        	</ul>
+      	</div>
+      	<div class="col-sm-6">
+        	<ul class="list-group">
+        		<li class="list-group-item list-group-item-success">Following</li>
+			{{#each user.following}}
+				<li class="list-group-item">{{this}}
+					<a class="pull-right" href="/user/unfollow/{{this}}">unfollow <span class="glyphicon glyphicon-eye-close" ></span></a>
+				</li>
+			{{/each}}
+        	</ul>
+      	</div>
+    </div>
+{{else}}
+	<div id="feed"></div>
+{{/if}}

@@ -15,7 +15,7 @@ router.route('/')
         var newUser = new User({
             username: post.username,
             email: post.email,
-            registrationDate: new Date(),
+            registrationDate: + new Date(),
             following: [],
         });
         newUser.password = post.password;
@@ -31,11 +31,55 @@ router.route('/')
 
     // get all the users (accessed at GET http://localhost:1337/user)
     .get(function(req, res) {
-        User.find(function(err, users) {
-            if (err) {
-                res.send(err);
+        loadUser(req,res, function(user){
+            User.find()
+                .where('username')
+                .nin(user.following.concat([user.username]))
+                .exec(function(err, users) {
+                    if (err) {
+                        res.send(err);
+                    }
+                    res.render('index', {
+                        user: user,
+                        users: users,
+                        listing: true,
+                    });
+                });
+        });
+    });
+
+router.route('/follow/:username')
+    .get(function(req, res) {
+        var username = req.params.username;
+        loadUser(req,res, function(user){
+            if(username != user.username) {
+                console.log(user.following.indexOf(username));
+                console.log(username);
+                if(user.following.indexOf(username) < 0) {
+                    user.following.push(username);
+                }
             }
-            res.json(users);
+            user.save(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.redirect('/user');
+            });
+        });
+
+    });
+
+router.route('/unfollow/:usearname')
+    .get(function(req, res) {
+        loadUser(req,res, function(user){
+            var username = req.params.username;
+            user.following.splice(user.following.indexOf(username), 1);
+            user.save(function(err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.redirect('/user');
+            });
         });
     });
 
@@ -64,51 +108,13 @@ router.route('/login')
 
 router.route('/logout')
     .get(function(req,res) {
-        app.get('/logout', function (req, res) {
-          delete req.session.userId;
-          res.redirect('/');
-        });
+        delete req.session.userId;
+        res.redirect('/');
     });
 
 router.route('/register')
     .get(function(req, res) {
         res.render('register', {});
-    });
-
-// on routes that end in /users/:userId
-// ----------------------------------------------------
-router.route('/:userId')
-
-    // get the User with that id (accessed at GET http://localhost:1337/users/:userId)
-    .get(function(req, res) {
-        res.render('user',{
-            title: 'Users Panel',
-            message: 'get user with id ' + req.params.userId
-        });
-    })
-
-    // update the User with this id (accessed at PUT http://localhost:1337/users/:userId)
-    .put(function(req, res) {
-        res.render('user',{
-            title: 'Users Panel',
-            message: 'update user with id ' + req.params.userId
-        });
-    })
-
-    // delete the User with this id (accessed at DELETE http://localhost:1337/users/:userId)
-    .delete(function(req, res) {
-        // User.remove({
-        //     _id: req.params.userId
-        // }, function(err, User) {
-        //     if (err)
-        //         res.send(err);
-
-        //     res.json({ message: 'Successfully deleted' });
-        // });
-        res.render('user',{
-            title: 'Users Panel',
-            message: 'delete user with id ' + req.params.userId
-        });
     });
 
 module.exports = router;
