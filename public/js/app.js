@@ -2,6 +2,7 @@ require(['jquery', 'handlebars', 'text!js/templates/feed.html', 'bootstrap'], fu
 	Handlebars = Handlebars.default;
 
 	function reloadFeed(data) {
+    debugger;
 		$("#feed").html(Handlebars.compile(feedTemplate)(data));
   	}
 
