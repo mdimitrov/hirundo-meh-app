@@ -12,10 +12,24 @@ a {
 	margin-top: 20px;
 }
 
+.empty-feed {
+	font-weight: bold;
+	position: relative;
+	left: 50%;
+	margin-left: -60px;
+	margin-top: 20px;
+}
+
 .input-group {
 	padding-left: 15px;
 	width: 585px;
 }
+
+.panel-heading .glyphicon-eye-close {
+	margin-left: 5px;
+	cursor: pointer;
+}
+
 * {
 	-moz-user-select: none;
   -webkit-user-select: none;
