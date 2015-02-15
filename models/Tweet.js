@@ -7,7 +7,7 @@ var tweetSchema = new Schema({
 	author: String,// референции по unique username към документ от към документ от колекцията User колекцията User
   	content: String,
   	location: String,
-  	date: Date
+  	date: Number
 });
 
 // important about Date!!

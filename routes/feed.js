@@ -14,7 +14,10 @@ router.get('/', function(req, res) {
         if (err) {
           callback(err);
         } else {
-          Tweet.find({$or: [{author: { $in: user.following } }, {authorId: userId}]}, function (err, data) {
+          Tweet.find({$or: [{author: { $in: user.following } }, {authorId: userId}]}, null, {
+            sort: {date: -1},
+            limit: 50,
+          }, function (err, data) {
             if (err) {
               callback(err);
             } else {

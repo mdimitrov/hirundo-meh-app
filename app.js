@@ -44,12 +44,14 @@ fs.readdirSync(__dirname + '/models').forEach(function (file) {
 
 //load routes
 var index = require("./routes"),
-    user = require("./routes/user");
-	feed = require("./routes/feed");
+    user = require("./routes/user"),
+	feed = require("./routes/feed"),
+    tweet = require("./routes/tweet");
 
 app.use('/', index);
 app.use('/user', user);
 app.use('/feed', feed);
+app.use('/tweet', tweet);
 
 /********* Error handling ***********/
 // catch 404 and forward to error handler
