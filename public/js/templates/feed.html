@@ -4,7 +4,12 @@
 	<div class="container">
 		{{#each tweets}}
 			<div class='panel panel-primary'>
-				<div class='panel-heading'>{{this.author}}</div>
+				<div class='panel-heading'>
+					{{this.author}} - {{this.date}}
+					{{#if this.disableUnfollow}}
+					<span class='glyphicon glyphicon-eye-close' username='{{this.author}}'></span>
+					{{/if}}
+				</div>
 				<div class='panel-body'>{{this.content}}</div>
 			</div>
 		{{/each}}

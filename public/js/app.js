@@ -2,9 +2,12 @@ require(['jquery', 'handlebars', 'text!js/templates/feed.html', 'bootstrap'], fu
 	Handlebars = Handlebars.default;
 
 	function reloadFeed(data) {
-    debugger;
 		$("#feed").html(Handlebars.compile(feedTemplate)(data));
-  	}
+    $(".glyphicon-eye-close").click(function (event) {
+      //TODO
+      console.log(event.target.getAttribute('username'));
+    });
+	}
 
   function fetchFeed() {
     $.ajax({
@@ -12,6 +15,11 @@ require(['jquery', 'handlebars', 'text!js/templates/feed.html', 'bootstrap'], fu
       url: "http://localhost:1337/feed"
     })
     .done(function(feed) {
+      // Format date
+      feed.tweets.forEach(function (tweet) {
+        tweet.date = new Date(tweet.date).toLocaleString();
+      });
+
       reloadFeed(feed);
     })
     .fail(function(error) {

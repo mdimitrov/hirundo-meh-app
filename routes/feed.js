@@ -23,7 +23,14 @@ router.get('/', function(req, res) {
             } else {
               res.json({
               empty: !data.length,
-              tweets: data
+              tweets: data.map(function (tweet) {
+                return {
+                  author: tweet.author,
+                  content: tweet.content,
+                  date: tweet.date,
+                  disableUnfollow: tweet.authorId === userId
+                };
+              })
             });
             }
           })
